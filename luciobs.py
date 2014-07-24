@@ -265,10 +265,13 @@ def photometry(dither=1):
     # 30 pixels in radius and sky annuli at 30-50 pixels
     table = apphot(image, t, 15, [20,30], return_mag=True)
 
+    formats = {'xc':'%8.3f', 'xc':'%8.3f', 'flux':'%7.2f', \
+               'eflux':'%6.2f', 'mag':'%6.3f', 'emag':'%5.3f'}
+
     if dither == 2:
-        table.write('flux_dither2.txt', format='ascii.tab')
+        table.write('flux_dither2.txt', format='ascii.tab', formats=formats)
     else:
-        table.write('flux_dither1.txt', format='ascii.tab')
+        table.write('flux_dither1.txt', format='ascii.tab', formats=formats)
 
 
 def main():
